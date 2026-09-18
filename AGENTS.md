@@ -25,7 +25,8 @@ build step, no framework, no package manager: `index.html`, `style.css`,
 - Cell units, not `ch`. Chrome computes `ch` as 15.9998px at the 2x size and
   a centred column then starts on a fraction of a pixel. `--cw` is half a
   `rem`, and `.screen` snaps its left margin with `round()` where supported.
-- The font scales 1x (16px) or 2x (32px), never in between.
+- The font is 16px; the footer's `[ 2x ]` switch makes it 32px, never anything
+  in between.
 - Display names in prose are STAR/AMP, STAR/CORD, STAR/FOLD, STAR/KIT and
   STAR/FLEET; repositories, binaries and URLs are lowercase.
 - No Star Trek: no quotes, no arrowhead, no "boldly". The name is a pun on

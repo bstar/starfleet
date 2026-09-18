@@ -32,7 +32,8 @@ the font does not load over `file://` in every browser.
   and the columns drift. No curly quotes, em dashes or `©`.
 - Colours are the sixteen `--c0`..`--c15` custom properties and nothing else.
 - Sizes are multiples of the cell (`--cell`, `--cw`) so the bitmap stays
-  crisp; the page doubles to 32px on wide screens and never scales by 1.5.
+  crisp; the page is 16px, the footer's `[ 2x ]` switch doubles it, and nothing
+  ever scales by 1.5.
 
 ## Licence
 

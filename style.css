@@ -35,10 +35,9 @@ html {
   -moz-osx-font-smoothing: unset;
 }
 
-/* Only ever double. 1.5x would put the bitmap on half pixels. */
-@media (min-width: 1440px) and (min-height: 900px) {
-  html { font-size: 32px; }
-}
+/* 16px is the font's own size. The footer's [ 2x ] doubles it, and only
+ * ever doubles: 1.5x would put the bitmap on half pixels. */
+html.x2 { font-size: 32px; }
 
 body { margin: 0; }
 

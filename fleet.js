@@ -199,23 +199,25 @@
     }
   }
 
-  function crt() {
-    const link = document.getElementById("crt-toggle");
+  /* A footer switch that adds a class and remembers itself. */
+  function toggle(id, key, target, cls, labels) {
+    const link = document.getElementById(id);
     const apply = (on) => {
-      document.body.classList.toggle("crt", on);
-      if (link) link.textContent = on ? "[ CRT: on ]" : "[ CRT: off ]";
+      target.classList.toggle(cls, on);
+      if (link) link.textContent = on ? labels[1] : labels[0];
     };
     let on = false;
-    try { on = localStorage.getItem("starfleet:crt") === "1"; } catch (e) { /* ignore */ }
+    try { on = localStorage.getItem(key) === "1"; } catch (e) { /* ignore */ }
     apply(on);
     if (link) link.addEventListener("click", (e) => {
       e.preventDefault();
       on = !on;
       apply(on);
-      try { localStorage.setItem("starfleet:crt", on ? "1" : "0"); } catch (e) { /* ignore */ }
+      try { localStorage.setItem(key, on ? "1" : "0"); } catch (e) { /* ignore */ }
     });
   }
 
-  crt();
+  toggle("crt-toggle", "starfleet:crt", document.body, "crt", ["[ CRT: off ]", "[ CRT: on ]"]);
+  toggle("x2-toggle", "starfleet:x2", document.documentElement, "x2", ["[ 1x ]", "[ 2x ]"]);
   main().catch(() => status("static"));
 })();
