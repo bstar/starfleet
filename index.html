@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STAR/FLEET</title>
+<meta name="description" content="Four terminal applications by bstar: STAR/AMP, a music player; STAR/CORD, a Discord client; STAR/FOLD, a file manager; and STAR/KIT, the foundation they share.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="img/staramp.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="screen">
+
+<header>
+<pre class="logo" aria-label="STAR/FLEET"><span aria-hidden="true"><span class="c10">███████╗████████╗ █████╗ ██████╗ </span><span class="c7">    ██╗</span>
+<span class="c10">██╔════╝╚══██╔══╝██╔══██╗██╔══██╗</span><span class="c7">   ██╔╝</span>
+<span class="c10">███████╗   ██║   ███████║██████╔╝</span><span class="c7">  ██╔╝ </span>
+<span class="c10">╚════██║   ██║   ██╔══██║██╔══██╗</span><span class="c7"> ██╔╝  </span>
+<span class="c10">███████║   ██║   ██║  ██║██║  ██║</span><span class="c7">██╔╝   </span>
+<span class="c10">╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝</span><span class="c7">╚═╝    </span>
+<span class="c15">███████╗██╗     ███████╗███████╗████████╗</span>
+<span class="c15">██╔════╝██║     ██╔════╝██╔════╝╚══██╔══╝</span>
+<span class="c15">█████╗  ██║     █████╗  █████╗     ██║   </span>
+<span class="c15">██╔══╝  ██║     ██╔══╝  ██╔══╝     ██║   </span>
+<span class="c15">██║     ███████╗███████╗███████╗   ██║   </span>
+<span class="c15">╚═╝     ╚══════╝╚══════╝╚══════╝   ╚═╝   </span></span></pre>
+<p class="strap"><span class="c8">░▒▓</span> bstar presents · four terminal apps · one foundation <span class="c8">▓▒░</span></p>
+<p class="nav">[ <a href="#fleet">fleet</a> ] [ <a href="#staramp">amp</a> ] [ <a href="#starcord">cord</a> ] [ <a href="#starfold">fold</a> ] [ <a href="#starkit">kit</a> ] [ <a href="#install">install</a> ] [ <a href="#greetz">greetz</a> ]</p>
+<pre class="prompt"><span class="c7">C:\STAR\&gt;</span> <span class="c15">type FLEET.NFO</span><span class="blink c15">▌</span></pre>
+</header>
+
+<h2 id="release">RELEASE INFO</h2>
+
+<pre class="nfo" id="nfo"><span class="k">  SUPPLIER ....:</span> <span class="v">bstar                   </span> <span class="k">LICENCE .....:</span> <span class="v">MIT</span>
+<span class="k">  TYPE ........:</span> <span class="v">terminal applications   </span> <span class="k">LANGUAGE ....:</span> <span class="v">Rust / ratatui</span>
+<span class="k">  PLATFORM ....:</span> <span class="v">Linux x86_64 / aarch64 / macOS Apple Silicon</span>
+<span class="k">  LAST ACTIVITY:</span> <span class="v" data-repo="fleet" data-field="date">2026-09-16</span>              <span class="k">PROTECTION ..:</span> <span class="v">none. source on GitHub.</span></pre>
+
+<p>STAR/FLEET is a family of programs that live in the terminal: a music player,
+a Discord client and a file manager, all built on the same foundation crate,
+all drawn with the same docked panels and the same sixteen themes. They are
+written in Rust on ratatui, run on Linux and macOS, work over SSH, and take
+the keyboard or the mouse as you prefer.</p>
+
+<p>Nothing phones home. There are no accounts, no telemetry and no subscription.
+Each program is a single binary and a directory of its own files.</p>
+
+<h2 id="fleet">THE FLEET</h2>
+
+<div class="scroll">
+<table class="roster">
+<thead>
+<tr><th>APP</th><th>WHAT</th><th>LATEST</th><th>CI</th><th>LAST</th></tr>
+</thead>
+<tbody>
+<tr>
+<td class="app"><img class="icon" src="img/staramp.svg" alt=""><a href="#staramp">STAR/AMP</a></td>
+<td>music player</td>
+<td><a data-repo="staramp" data-field="version-link" href="https://github.com/bstar/staramp/tags"><span data-repo="staramp" data-field="version">v0.1.1</span></a></td>
+<td><span data-repo="staramp" data-field="ci">[ -- ]</span></td>
+<td><span data-repo="staramp" data-field="date">2026-09-12</span></td>
+</tr>
+<tr>
+<td class="app"><img class="icon" src="img/starcord.svg" alt=""><a href="#starcord">STAR/CORD</a></td>
+<td>Discord client</td>
+<td><a data-repo="starcord" data-field="version-link" href="https://github.com/bstar/starcord/tags"><span data-repo="starcord" data-field="version">v0.0.2</span></a></td>
+<td><span data-repo="starcord" data-field="ci">[ -- ]</span></td>
+<td><span data-repo="starcord" data-field="date">2026-09-14</span></td>
+</tr>
+<tr>
+<td class="app"><img class="icon" src="img/starfold.svg" alt=""><a href="#starfold">STAR/FOLD</a></td>
+<td>file manager</td>
+<td><a data-repo="starfold" data-field="version-link" href="https://github.com/bstar/starfold"><span data-repo="starfold" data-field="version">unreleased</span></a></td>
+<td><span data-repo="starfold" data-field="ci">[ -- ]</span></td>
+<td><span data-repo="starfold" data-field="date">2026-09-16</span></td>
+</tr>
+<tr>
+<td class="app"><span class="glyph" aria-hidden="true">≡</span><a href="#starkit">STAR/KIT</a></td>
+<td>the shared foundation</td>
+<td><a data-repo="starkit" data-field="version-link" href="https://github.com/bstar/starkit/tags"><span data-repo="starkit" data-field="version">v0.2.1</span></a></td>
+<td><span data-repo="starkit" data-field="ci">[ -- ]</span></td>
+<td><span data-repo="starkit" data-field="date">2026-09-15</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p id="fleet-status">static · versions as of 2026-09-18</p>
+
+<!-- STAR/AMP ------------------------------------------------------------- -->
+
+<section class="app" id="staramp">
+<h3>╡ STAR/AMP ╞</h3>
+<p class="tagline">A terminal player for a more civilised age.</p>
+<div class="cols">
+<div class="art">
+<img class="shot" src="img/staramp.png" width="752" height="854" alt="STAR/AMP playing a FLAC album bit-perfect, with the analyzer, album art, listening activity and a library timeline playlist.">
+</div>
+<div class="text">
+<p>No streaming. No radio stations. No account required. Winamp inspired.
+It plays the files on your disk, and it plays all of them.</p>
+<h4>FEATURES</h4>
+<ul>
+<li>FLAC, MP3, Vorbis, AAC and ALAC natively; APE, WavPack, Musepack, DSD, Opus and WMA through libavcodec. Bit-perfect, at the file's own rate.</li>
+<li>CUE sheets as first-class citizens. Gapless albums. Crossfade.</li>
+<li>An SQLite index: 34,000 files scanned in under eight minutes cold, a second warm.</li>
+<li>Docked Winamp-style panels, sixteen themes, classic .wsz skin import, a seven-mode visualizer, album art as real pixels.</li>
+<li>Local listening history, with optional Last.fm and ListenBrainz scrobbling and Discord presence.</li>
+<li>A parametric EQ that reads and writes Equalizer APO files. ReplayGain.</li>
+<li>A smart-playlist query language, library timelines, and a queue that plays a library over one SSH connection.</li>
+<li>Every open terminal is the same player. MPRIS and a control socket.</li>
+</ul>
+<h4>GET IT</h4>
+<p class="get"><code>nix run github:bstar/staramp</code></p>
+<p>Also an AppImage, .deb packages for bookworm, trixie and Ubuntu 24.04, an
+Arch PKGBUILD, a portable tarball and a home-manager module. See
+<a href="https://github.com/bstar/staramp/blob/main/docs/installing.md">installing</a>
+or the <a href="https://github.com/bstar/staramp">repository</a>.</p>
+<pre class="status">LATEST ..: <span class="v" data-repo="staramp" data-field="version">v0.1.1</span>
+CI ......: <span data-repo="staramp" data-field="ci">[ -- ]</span>
+LAST ....: <span class="v" data-repo="staramp" data-field="date">2026-09-12</span></pre>
+<p class="small">Not affiliated with, or endorsed by, Winamp or its rights holders.
+It is a tribute to a program a lot of us grew up with.</p>
+</div>
+</div>
+</section>
+
+<!-- STAR/CORD ------------------------------------------------------------ -->
+
+<section class="app" id="starcord">
+<h3>╡ STAR/CORD ╞</h3>
+<p class="tagline">A terminal client for Discord that feels like Winamp.</p>
+<div class="cols stack">
+<div class="art">
+<pre class="mock" aria-hidden="true"><span class="c8">┌─</span><span class="c13"> STAR/CORD </span><span class="c8">───────────────────────┐</span>
+<span class="c8">│</span> <span class="c15">- friends</span>     <span class="c13">#general</span>             <span class="c8">│</span>
+<span class="c8">│</span> <span class="c15">- the-crew</span>    <span class="c8">────────────────────</span> <span class="c8">│</span>
+<span class="c8">│</span>   <span class="c15">#general</span>    <span class="c11">mara</span>  hey, ship it?  <span class="c8">│</span>
+<span class="c8">│</span>   #music   <span class="c14">3</span>   <span class="c10">bob</span>   after coffee  <span class="c8">│</span>
+<span class="c8">│</span>   #memes       <span class="c11">mara</span>  :coffee: x2   <span class="c8">│</span>
+<span class="c8">│</span> <span class="c15">- oss</span>         <span class="c8">[img]</span> cover.png      <span class="c8">│</span>
+<span class="c8">│</span>   #ratatui     <span class="c10">bob</span>   looks right   <span class="c8">│</span>
+<span class="c8">│</span>                <span class="c8">mara is typing...</span>   <span class="c8">│</span>
+<span class="c8">│</span>                                    <span class="c8">│</span>
+<span class="c8">│</span> <span class="c13">»</span> <span class="c15">type a message</span><span class="c15">▌</span>                  <span class="c8">│</span>
+<span class="c8">└────────────────────────────────────┘</span></pre>
+</div>
+<div class="text">
+<p>Real-time chat with your friends and servers. The account, the servers and
+the settings stay in Discord's own app; this is a way to sit in the
+conversation from a terminal.</p>
+<h4>FEATURES</h4>
+<ul>
+<li>A live gateway session: messages, edits, deletions, typing, presence and read marks, resumed when the connection drops.</li>
+<li>Servers, channels, DMs and threads, with folding categories, unread and mention counts, mutes and a lazy member list.</li>
+<li>Pictures in the terminal: attachments, avatars, custom emoji and animated GIFs as real pixels in kitty, WezTerm, Ghostty and foot; half-blocks anywhere else.</li>
+<li>:name: completion, reactions, a GIF picker, and attachments by path or clipboard paste.</li>
+<li>A bell, a status line and, if you like, a desktop notification.</li>
+<li>Search across a channel or a whole server.</li>
+<li>One column of modules and the same sixteen themes as STAR/AMP.</li>
+</ul>
+<p>It does not do voice, video, screen sharing, server administration,
+account settings or friend requests.</p>
+<h4>GET IT</h4>
+<p class="get"><code>nix run github:bstar/starcord</code></p>
+<p>Also an AppImage, .deb packages, an Arch PKGBUILD, a portable tarball and a
+home-manager module. A C runtime is the whole of the dependencies. See
+<a href="https://github.com/bstar/starcord/blob/main/docs/installing.md">installing</a>
+or the <a href="https://github.com/bstar/starcord">repository</a>.</p>
+<pre class="status">LATEST ..: <span class="v" data-repo="starcord" data-field="version">v0.0.2</span>
+CI ......: <span data-repo="starcord" data-field="ci">[ -- ]</span>
+LAST ....: <span class="v" data-repo="starcord" data-field="date">2026-09-14</span></pre>
+<p class="small">STAR/CORD signs in as a user account, the way the phone app does.
+Discord's terms reserve the right to act against accounts that use a client
+other than their own. Read <a href="https://github.com/bstar/starcord/blob/main/docs/account-safety.md">account safety</a>
+before you decide. Not affiliated with, or endorsed by, Discord.</p>
+</div>
+</div>
+</section>
+
+<!-- STAR/FOLD ------------------------------------------------------------ -->
+
+<section class="app" id="starfold">
+<h3>╡ STAR/FOLD ╞<span class="tag">[ UNRELEASED ]</span></h3>
+<p class="tagline">Unfold your filesystem.</p>
+<div class="cols stack">
+<div class="art">
+<pre class="mock" aria-hidden="true"><span class="c8">┌─</span><span class="c11"> STAR/FOLD </span><span class="c8">───────────────────────┐</span>
+<span class="c8">│</span> <span class="c8">~ » projects »</span> <span class="c15">star</span>                <span class="c8">│</span>
+<span class="c8">│</span> <span class="c8">──────────────────────────────────</span> <span class="c8">│</span>
+<span class="c8">│</span>   <span class="c11">staramp/</span>                    dir  <span class="c8">│</span>
+<span class="c8">│</span> <span class="c14">*</span> <span class="c11">starcord/</span>                   dir  <span class="c8">│</span>
+<span class="c8">│</span> <span class="c14">*</span> <span class="c11">starfold/</span>                   dir  <span class="c8">│</span>
+<span class="c8">│</span>   <span class="c11">starkit/</span>                    dir  <span class="c8">│</span>
+<span class="c8">│</span>   notes.md                    2.1k <span class="c8">│</span>
+<span class="c8">│</span> <span class="c8">┌ preview ────────────────────────┐</span><span class="c8">│</span>
+<span class="c8">│</span> <span class="c8">│</span> <span class="c15"># STAR/FOLD</span>                     <span class="c8">│</span><span class="c8">│</span>
+<span class="c8">│</span> <span class="c8">└─────────────────────────────────┘</span><span class="c8">│</span>
+<span class="c8">│</span> marks <span class="c14">2</span> · queue <span class="c14">2</span> ops · run: <span class="c15">r</span>     <span class="c8">│</span>
+<span class="c8">└────────────────────────────────────┘</span></pre>
+</div>
+<div class="text">
+<p>A file manager where the directories you drill through stack up behind
+you, the files you mark stay marked wherever you go, and nothing is copied,
+moved or deleted until you run the queue.</p>
+<h4>FEATURES</h4>
+<ul>
+<li>The fold stack: each directory pushes a level, the levels behind you fold to one line each, and alt+up/down walks them.</li>
+<li>Persistent marks that follow you across directories; y and m copy or move whatever is marked to where you stand.</li>
+<li>An operations queue. Nothing touches the disk until you say so, and delete goes to the trash.</li>
+<li>A preview panel for text, real-pixel images, directory summaries and a hexdump.</li>
+<li>One column, the same sixteen themes, and the mouse everywhere.</li>
+<li>Linux and macOS.</li>
+</ul>
+<h4>GET IT</h4>
+<p class="get"><code>nix run github:bstar/starfold</code></p>
+<p>No tag yet; that command builds main. The packaging (AppImage, .deb, Arch,
+tarball, home-manager) is in place for the first release. It has been built
+and tested headlessly so far and the window has not yet run in a real
+terminal, which <a href="https://github.com/bstar/starfold/blob/main/docs/status.md">status</a>
+is honest about. The <a href="https://github.com/bstar/starfold">repository</a>.</p>
+<pre class="status">LATEST ..: <span class="v" data-repo="starfold" data-field="version">unreleased</span>
+CI ......: <span data-repo="starfold" data-field="ci">[ -- ]</span>
+LAST ....: <span class="v" data-repo="starfold" data-field="date">2026-09-16</span></pre>
+</div>
+</div>
+</section>
+
+<!-- STAR/KIT ------------------------------------------------------------- -->
+
+<section class="app" id="starkit">
+<h3>╡ STAR/KIT ╞</h3>
+<p class="tagline">The foundation the other three stand on.</p>
+<div class="cols stack">
+<div class="art">
+<pre class="mock" aria-hidden="true"><span class="c8">┌─</span><span class="c14"> STAR/KIT · themes </span><span class="c8">───────────────┐</span>
+<span class="c8">│</span> <span class="c13">▓</span> catppuccin-mocha <span class="c5">▓</span> dracula       <span class="c8">│</span>
+<span class="c8">│</span> <span class="c15">▓</span> catppuccin-latte <span class="c9">▓</span> nord          <span class="c8">│</span>
+<span class="c8">│</span> <span class="c2">▓</span> winamp-classic   <span class="c13">▓</span> rose-pine     <span class="c8">│</span>
+<span class="c8">│</span> <span class="c3">▓</span> solarized-dark   <span class="c14">▓</span> ayu-dark      <span class="c8">│</span>
+<span class="c8">│</span> <span class="c6">▓</span> gruvbox-dark     <span class="c4">▓</span> kanagawa      <span class="c8">│</span>
+<span class="c8">│</span> <span class="c3">▓</span> tokyo-night      <span class="c11">▓</span> one-dark      <span class="c8">│</span>
+<span class="c8">│</span> <span class="c10">▓</span> everforest       <span class="c12">▓</span> cosmic        <span class="c8">│</span>
+<span class="c8">│</span> <span class="c8">▓</span> matte-black      <span class="c7">▓</span> terminal      <span class="c8">│</span>
+<span class="c8">│</span>                                    <span class="c8">│</span>
+<span class="c8">│</span> <span class="c8">panels · pictures · themes · dirs</span>  <span class="c8">│</span>
+<span class="c8">└────────────────────────────────────┘</span></pre>
+</div>
+<div class="text">
+<p>The terminal-UI crate that STAR/AMP, STAR/CORD and STAR/FOLD share. All
+three wanted the same theme engine, the same picture rendering, the same
+docked panels and the same idea of where a program's files live, and copying
+the answer between them would have meant maintaining three of everything.</p>
+<h4>WHAT IS IN IT</h4>
+<ul>
+<li>Themes: TOML with a base16 block and a role table, sixteen built in, a derivation chain, Stylix and COSMIC detection, and .wsz import.</li>
+<li>Pictures through ratatui-image: kitty, iTerm2, sixel, half-blocks.</li>
+<li>Layout: a dockable panel tree, a virtualised list, wrapping, a text input.</li>
+<li>Panel chrome: the double-bordered frame, scrollbar, overlay and confirm.</li>
+<li>The dull necessities: the app directory, file logging, atomic writes, terminal setup and the panic hook, a keybinding table and a help view.</li>
+</ul>
+<p>This is not a general TUI framework. Its API is what the three programs
+needed, and it grows when one of them needs more.</p>
+<h4>USE IT</h4>
+<p class="get"><code>starkit = { git = "https://github.com/bstar/starkit", tag = "<span data-repo="starkit" data-field="tag">v0.2.1</span>" }</code></p>
+<p>Versions are 0.x and tagged; each application pins a tag. The tag above is
+the newest one pushed. The <a href="https://github.com/bstar/starkit">repository</a>
+and its <a href="https://github.com/bstar/starkit/tree/main/docs">docs</a>.</p>
+<pre class="status">LATEST ..: <span class="v" data-repo="starkit" data-field="version">v0.2.1</span>
+CI ......: <span data-repo="starkit" data-field="ci">[ -- ]</span>
+LAST ....: <span class="v" data-repo="starkit" data-field="date">2026-09-15</span></pre>
+</div>
+</div>
+</section>
+
+<h2 id="install">INSTALL</h2>
+
+<pre class="install"><span class="k">  NIX ........:</span> <code>nix run github:bstar/&lt;app&gt;</code>
+                or add <code>github:bstar/&lt;app&gt;</code> as a flake input and import
+                <code>homeManagerModules.&lt;app&gt;</code> for <code>programs.&lt;app&gt;.enable</code>
+<span class="k">  APPIMAGE ...:</span> <code>chmod +x &lt;app&gt;-*-x86_64.AppImage &amp;&amp; ./&lt;app&gt;-*.AppImage</code>
+<span class="k">  DEBIAN .....:</span> .deb for bookworm, trixie and Ubuntu 24.04 on the releases page
+<span class="k">  ARCH .......:</span> <code>cd packaging &amp;&amp; makepkg -si</code>
+<span class="k">  TARBALL ....:</span> <code>tar xf &lt;app&gt;-*-x86_64-linux-gnu.tar.gz</code> and run the binary
+<span class="k">  SOURCE .....:</span> <code>cargo build --release</code> with a current stable Rust
+<span class="k">  MACOS ......:</span> Apple Silicon, through Nix or from source
+
+  Linux x86_64 and aarch64. Each program keeps its own files in one directory
+  and nothing else is written anywhere.</pre>
+
+<h2 id="greetz">GREETZ</h2>
+
+<pre class="greetz">  <a href="https://ratatui.rs">ratatui</a>, for the canvas.
+  Catppuccin · Dracula · Nord · Rose Pine · Tokyo Night · Gruvbox · Everforest
+  · Kanagawa · Ayu · One Dark · Solarized, for the colours.
+  Nullsoft and the Winamp skin scene, for base.wsz and the shape of it all.
+  <a href="https://int10h.org/oldschool-pc-fonts/">VileR</a>, for the Ultimate Oldschool PC Font Pack this page is set in
+  (IBM VGA 8x16, CC BY-SA 4.0).
+  Nix, for building the same thing twice.
+  Everyone still reading .NFO files.
+
+                        <span class="c8">░▒▓█</span> <span class="c15">bstar</span> <span class="c8">█▓▒░</span>  <span class="c8">2026</span></pre>
+
+<footer>
+<pre>NFO last updated 2026-09-18  ·  <a href="#" id="crt-toggle">[ CRT: off ]</a>  ·  MIT  ·  <a href="https://github.com/bstar">github.com/bstar</a>
+Versions, CI and dates are read from the GitHub API when this page loads.</pre>
+</footer>
+
+</main>
+<script src="fleet.js" defer></script>
+</body>
+</html>

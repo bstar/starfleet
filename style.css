@@ -1,0 +1,358 @@
+/* STAR/FLEET. An 80-column NFO in a browser.
+ *
+ * Everything is measured in character cells: the font is an 8x16 VGA bitmap,
+ * the page is 80 cells wide, and sizes are kept at integer multiples of the
+ * cell so the block glyphs stay hard-edged. Sixteen colours, the CGA ones,
+ * and nothing outside them except inside the app icons. */
+
+@font-face {
+  font-family: "Web437 IBM VGA";
+  src: url("fonts/Web437_IBM_VGA_8x16.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --c0: #000000; --c1: #0000aa; --c2: #00aa00; --c3: #00aaaa;
+  --c4: #aa0000; --c5: #aa00aa; --c6: #aa5500; --c7: #aaaaaa;
+  --c8: #555555; --c9: #5555ff; --c10: #55ff55; --c11: #55ffff;
+  --c12: #ff5555; --c13: #ff55ff; --c14: #ffff55; --c15: #ffffff;
+  --cell: 1rem;                 /* one character cell is 8x16 at 16px: this is its height */
+  --cw: calc(1rem / 2);         /* and this its width. Not `ch`: Chrome makes that 15.9998px at 2x */
+  --px: calc(1rem / 16);        /* one device pixel of the 16px design */
+}
+
+html {
+  background: var(--c0);
+  color: var(--c7);
+  font: 16px/1 "Web437 IBM VGA", "Perfect DOS VGA 437", "Px437 IBM VGA8", monospace;
+  font-variant-ligatures: none;
+  font-kerning: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+}
+
+/* Only ever double. 1.5x would put the bitmap on half pixels. */
+@media (min-width: 1440px) and (min-height: 900px) {
+  html { font-size: 32px; }
+}
+
+body { margin: 0; }
+
+.screen {
+  width: calc(var(--cw) * 80);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: var(--cell) 0 calc(var(--cell) * 2);
+  box-sizing: border-box;
+}
+
+/* A gutter once the column no longer fits. */
+@media (max-width: 679px) {
+  .screen { padding-left: var(--cell); padding-right: var(--cell); }
+}
+
+/* Centring can land the column on a half pixel, and a bitmap glyph drawn
+ * from a half pixel shows a seam at every cell edge. Snap it. */
+@supports (margin-left: round(down, 1px, 1px)) {
+  @media (min-width: 640px) {
+    .screen { margin-left: round(down, calc((100% - calc(var(--cw) * 80)) / 2), 1px); }
+  }
+}
+
+pre, code, kbd {
+  font: inherit;
+  white-space: pre;
+  line-height: var(--cell);
+  margin: 0;
+  tab-size: 4;
+}
+
+pre { overflow-x: auto; }     /* art scrolls on a phone; it never wraps */
+
+p, li, td, th {
+  line-height: var(--cell);
+}
+
+p {
+  margin: 0 0 var(--cell);
+  max-width: calc(var(--cw) * 80);
+}
+
+a { color: var(--c11); text-decoration: none; }
+a:hover, a:focus { background: var(--c1); color: var(--c15); outline: none; }
+
+::selection { background: var(--c1); color: var(--c15); }
+
+h1, h2, h3 { font: inherit; margin: 0; }
+
+/* The sixteen colours as spans, foreground and background. */
+.c0 { color: var(--c0); }   .c1 { color: var(--c1); }   .c2 { color: var(--c2); }
+.c3 { color: var(--c3); }   .c4 { color: var(--c4); }   .c5 { color: var(--c5); }
+.c6 { color: var(--c6); }   .c7 { color: var(--c7); }   .c8 { color: var(--c8); }
+.c9 { color: var(--c9); }   .c10 { color: var(--c10); } .c11 { color: var(--c11); }
+.c12 { color: var(--c12); } .c13 { color: var(--c13); } .c14 { color: var(--c14); }
+.c15 { color: var(--c15); }
+.b0 { background: var(--c0); }   .b1 { background: var(--c1); }   .b2 { background: var(--c2); }
+.b3 { background: var(--c3); }   .b4 { background: var(--c4); }   .b5 { background: var(--c5); }
+.b6 { background: var(--c6); }   .b7 { background: var(--c7); }   .b8 { background: var(--c8); }
+.b9 { background: var(--c9); }   .b10 { background: var(--c10); } .b11 { background: var(--c11); }
+.b12 { background: var(--c12); } .b13 { background: var(--c13); } .b14 { background: var(--c14); }
+.b15 { background: var(--c15); }
+
+/* Header ----------------------------------------------------------------- */
+
+.logo {
+  text-align: center;
+  overflow: hidden;
+}
+
+.strap {
+  text-align: center;
+  color: var(--c7);
+  margin: var(--cell) 0 0;
+}
+
+.prompt {
+  margin: var(--cell) 0;
+}
+
+.nav {
+  text-align: center;
+  margin: 0 0 var(--cell);
+  color: var(--c8);
+}
+
+.nav a { color: var(--c7); }
+.nav a:hover, .nav a:focus { color: var(--c15); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .blink { animation: blink 1s steps(2, start) infinite; }
+  @keyframes blink { to { visibility: hidden; } }
+}
+
+/* Section rules: ░▒▓█ TITLE █▓▒░ then a line of ─ to the right edge. */
+
+h2 {
+  display: flex;
+  align-items: baseline;
+  color: var(--c15);
+  margin: calc(var(--cell) * 2) 0 var(--cell);
+  white-space: pre;
+  overflow: hidden;
+}
+
+h2::before {
+  content: "░▒▓█ ";
+  color: var(--c9);
+}
+
+h2::after {
+  content: " █▓▒░────────────────────────────────────────────────────────────────────────────";
+  color: var(--c9);
+  flex: 1;
+  overflow: hidden;
+  white-space: pre;
+}
+
+/* Key/value NFO blocks ---------------------------------------------------- */
+
+.nfo { margin: 0 0 var(--cell); }
+.nfo .k { color: var(--c7); }
+.nfo .v { color: var(--c15); }
+
+/* The roster ------------------------------------------------------------- */
+
+.scroll { overflow-x: auto; margin: 0 0 var(--cell); }
+
+.roster {
+  border-collapse: collapse;
+  width: 100%;
+  white-space: pre;
+}
+
+.roster th, .roster td {
+  border: var(--px) solid var(--c8);
+  padding: 0 var(--cw);
+  text-align: left;
+  vertical-align: middle;
+  height: calc(var(--cell) * 2);
+}
+
+.roster th {
+  color: var(--c14);
+  background: var(--c0);
+  font-weight: normal;
+}
+
+.roster tbody tr:hover { background: var(--c1); color: var(--c15); }
+.roster tbody tr:hover a { color: var(--c15); }
+
+.roster .icon {
+  width: calc(var(--cell) * 2);
+  height: calc(var(--cell) * 2);
+  vertical-align: middle;
+  margin-right: var(--cw);
+}
+
+.roster .glyph {
+  display: inline-block;
+  width: calc(var(--cell) * 2);
+  text-align: center;
+  color: var(--c14);
+  margin-right: var(--cw);
+}
+
+.roster .app a { color: var(--c15); }
+
+#fleet-status {
+  color: var(--c8);
+  margin: 0 0 var(--cell);
+}
+
+/* App blocks: a double frame with the title let into the top rule. -------- */
+
+.app {
+  position: relative;
+  border: calc(var(--px) * 3) double var(--c8);
+  padding: calc(var(--cell) * 1.5) calc(var(--cw) * 2) var(--cell);
+  margin: calc(var(--cell) * 2) 0;
+}
+
+.app h3 {
+  position: absolute;
+  top: calc(var(--cell) * -0.5);
+  left: calc(var(--cw) * 2);
+  background: var(--c0);
+  padding: 0 var(--cw);
+  color: var(--c15);
+  white-space: pre;
+}
+
+.app h3 .tag { color: var(--c12); margin-left: var(--cw); }
+
+.app .tagline {
+  margin: 0 0 var(--cell);
+}
+
+.app .cols {
+  display: grid;
+  grid-template-columns: calc(var(--cw) * 38) 1fr;
+  column-gap: calc(var(--cw) * 2);
+}
+
+@media (max-width: 41em) {
+  .app .cols { grid-template-columns: 1fr; row-gap: var(--cell); }
+}
+
+.app .art, .app .text { min-width: 0; }
+
+/* Blocks whose art is a short mock screen stack it above the text. */
+.app .cols.stack { grid-template-columns: 1fr; row-gap: var(--cell); }
+.app .cols.stack .art { text-align: center; }
+.app .cols.stack .mock { display: inline-block; text-align: left; }
+
+.shot {
+  display: block;
+  width: calc(var(--cw) * 38);
+  max-width: 100%;
+  height: auto;
+  border: var(--px) solid var(--c8);
+  box-sizing: border-box;
+}
+
+.mock {
+  color: var(--c7);
+}
+
+.app h4 {
+  font: inherit;
+  margin: var(--cell) 0 0;
+  color: var(--c14);
+}
+
+.app h4::before { content: "» "; color: var(--c8); }
+
+.app ul {
+  margin: 0 0 var(--cell);
+  padding: 0 0 0 calc(var(--cw) * 2);
+  list-style: none;
+}
+
+.app li::before { content: "· "; color: var(--c8); }
+
+.app li { text-indent: calc(var(--cw) * -2); padding-left: calc(var(--cw) * 2); }
+
+.app .get {
+  margin: 0;
+}
+
+.app .get code {
+  display: block;
+  color: var(--c10);
+  margin: 0 0 0 calc(var(--cw) * 2);
+  overflow-x: auto;
+}
+
+.app .status {
+  margin: var(--cell) 0 0;
+  color: var(--c7);
+}
+
+.app .status .v { color: var(--c15); }
+
+.app .small {
+  color: var(--c8);
+  margin: var(--cell) 0 0;
+}
+
+.app .small a { color: var(--c7); }
+
+/* Colour per app, on the tagline and the title. */
+#staramp h3, #staramp .tagline { color: var(--c10); }
+#starcord h3, #starcord .tagline { color: var(--c13); }
+#starfold h3, #starfold .tagline { color: var(--c11); }
+#starkit h3, #starkit .tagline { color: var(--c14); }
+
+/* Install and greetz ----------------------------------------------------- */
+
+.install .k { color: var(--c14); }
+.install code { color: var(--c10); }
+
+.greetz { color: var(--c7); }
+.greetz a { color: var(--c11); }
+
+/* Footer ----------------------------------------------------------------- */
+
+footer {
+  margin: calc(var(--cell) * 2) 0 0;
+  color: var(--c8);
+  border-top: var(--px) solid var(--c8);
+  padding-top: var(--cell);
+}
+
+footer a { color: var(--c7); }
+
+/* Live values get the bright colour once the API has spoken. */
+.live { color: var(--c15); }
+.live.ok { color: var(--c10); }
+.live.fail { color: var(--c12); }
+.live.unknown { color: var(--c8); }
+
+/* CRT, opt-in from the footer. Scanlines and a faint glow, nothing else. */
+body.crt::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 calc(var(--px) * 2),
+    rgba(0, 0, 0, 0.25) calc(var(--px) * 2) calc(var(--px) * 4)
+  );
+}
+
+body.crt { text-shadow: 0 0 calc(var(--px) * 2) currentColor; }
