@@ -112,8 +112,8 @@ It plays the files on your disk, and it plays all of them.</p>
 </ul>
 <h4>GET IT</h4>
 <p class="get"><code>nix run github:bstar/staramp</code></p>
-<p>Also an AppImage, .deb packages for bookworm, trixie and Ubuntu 24.04, an
-Arch PKGBUILD, a portable tarball and a home-manager module. See
+<p>Linux releases use Nix and AppImage; macOS gets an Apple Silicon archive.
+A home-manager module is included. See
 <a href="https://github.com/bstar/staramp/blob/main/docs/installing.md">installing</a>
 or the <a href="https://github.com/bstar/staramp">repository</a>.</p>
 <pre class="status">LATEST ..: <span class="v" data-repo="staramp" data-field="version">v0.1.1</span>
@@ -163,8 +163,8 @@ conversation from a terminal.</p>
 account settings or friend requests.</p>
 <h4>GET IT</h4>
 <p class="get"><code>nix run github:bstar/starcord</code></p>
-<p>Also an AppImage, .deb packages, an Arch PKGBUILD, a portable tarball and a
-home-manager module. A C runtime is the whole of the dependencies. See
+<p>Linux releases use Nix and AppImage; macOS gets an Apple Silicon archive.
+A home-manager module is included. A C runtime is the whole of the dependencies. See
 <a href="https://github.com/bstar/starcord/blob/main/docs/installing.md">installing</a>
 or the <a href="https://github.com/bstar/starcord">repository</a>.</p>
 <pre class="status">LATEST ..: <span class="v" data-repo="starcord" data-field="version">v0.0.2</span>
@@ -208,17 +208,15 @@ moved or deleted until you run the queue.</p>
 <li>The fold stack: each directory pushes a level, the levels behind you fold to one line each, and alt+up/down walks them.</li>
 <li>Persistent marks that follow you across directories; y and m copy or move whatever is marked to where you stand.</li>
 <li>An operations queue. Nothing touches the disk until you say so, and delete goes to the trash.</li>
-<li>A preview panel for text, real-pixel images, directory summaries and a hexdump.</li>
+<li>A preview panel for media tags, PDF text, directory trees and real-pixel images.</li>
 <li>One column, the same sixteen themes, and the mouse everywhere.</li>
 <li>Linux and macOS.</li>
 </ul>
 <h4>GET IT</h4>
 <p class="get"><code>nix run github:bstar/starfold</code></p>
-<p>No tag yet; that command builds main. The packaging (AppImage, .deb, Arch,
-tarball, home-manager) is in place for the first release. It has been built
-and tested headlessly so far and the window has not yet run in a real
-terminal, which <a href="https://github.com/bstar/starfold/blob/main/docs/status.md">status</a>
-is honest about. The <a href="https://github.com/bstar/starfold">repository</a>.</p>
+<p>Linux releases use Nix and AppImage; macOS gets an Apple Silicon archive.
+See <a href="https://github.com/bstar/starfold/blob/main/docs/installing.md">installing</a>
+or the <a href="https://github.com/bstar/starfold">repository</a>.</p>
 <pre class="status">LATEST ..: <span class="v" data-repo="starfold" data-field="version">unreleased</span>
 CI ......: <span data-repo="starfold" data-field="ci">[ -- ]</span>
 LAST ....: <span class="v" data-repo="starfold" data-field="date">2026-09-16</span></pre>
@@ -279,11 +277,8 @@ LAST ....: <span class="v" data-repo="starkit" data-field="date">2026-09-15</spa
                 or add <code>github:bstar/&lt;app&gt;</code> as a flake input and import
                 <code>homeManagerModules.&lt;app&gt;</code> for <code>programs.&lt;app&gt;.enable</code>
 <span class="k">  APPIMAGE ...:</span> <code>chmod +x &lt;app&gt;-*-x86_64.AppImage &amp;&amp; ./&lt;app&gt;-*.AppImage</code>
-<span class="k">  DEBIAN .....:</span> .deb for bookworm, trixie and Ubuntu 24.04 on the releases page
-<span class="k">  ARCH .......:</span> <code>cd packaging &amp;&amp; makepkg -si</code>
-<span class="k">  TARBALL ....:</span> <code>tar xf &lt;app&gt;-*-x86_64-linux-gnu.tar.gz</code> and run the binary
 <span class="k">  SOURCE .....:</span> <code>cargo build --release</code> with a current stable Rust
-<span class="k">  MACOS ......:</span> Apple Silicon, through Nix or from source
+<span class="k">  MACOS ......:</span> Apple Silicon archive, or Nix
 
   Linux x86_64 and aarch64. Each program keeps its own files in one directory
   and nothing else is written anywhere.</pre>
